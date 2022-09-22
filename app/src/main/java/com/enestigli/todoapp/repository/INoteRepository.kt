@@ -1,5 +1,6 @@
 package com.enestigli.todoapp.repository
 
+import androidx.lifecycle.LiveData
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
@@ -9,7 +10,7 @@ import com.enestigli.todoapp.room.Note
 interface INoteRepository {
 
 
-    suspend fun getNotes():List<Note>
+    fun getNote():LiveData<List<Note>>
 
     suspend fun Insert(note: Note)
 

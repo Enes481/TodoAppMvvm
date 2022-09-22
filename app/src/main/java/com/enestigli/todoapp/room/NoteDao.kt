@@ -1,12 +1,13 @@
 package com.enestigli.todoapp.room
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
 interface NoteDao {
 
     @Query("SELECT * FROM Notes")
-    suspend fun getNotes():List<Note>
+    fun observeNotes(): LiveData<List<Note>> //suspend yazmadık çünkü livedata zaten asenkron çalışır.
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun Insert(note:Note)

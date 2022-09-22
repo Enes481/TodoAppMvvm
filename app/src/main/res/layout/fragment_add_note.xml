@@ -178,25 +178,27 @@
 
 
             <RadioGroup
+
+                android:id="@+id/AddNoteFragmentRadioGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/r1"
+                    android:id="@+id/AddNoteFragmentHighPriorityRadioBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"></RadioButton>
 
                 <RadioButton
-                    android:id="@+id/r2"
+                    android:id="@+id/AddNoteFragmentMediumPriorityRadioBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"></RadioButton>
 
                 <RadioButton
-                    android:id="@+id/r3"
+                    android:id="@+id/AddNoteFragmentLowPriorityRadioBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"></RadioButton>

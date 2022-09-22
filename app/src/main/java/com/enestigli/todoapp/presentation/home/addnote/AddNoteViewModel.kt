@@ -19,21 +19,23 @@ class AddNoteViewModel @Inject constructor(
 
 
 
-    fun insertNote(note: Note) = viewModelScope.launch{
+    private fun insertNote(note: Note) = viewModelScope.launch{
         repository.Insert(note)
     }
 
 
-    fun makeNote(title:String,note:String,currentDate:String){
-        if(title.isEmpty() || note.isEmpty()){
-           println("Enter titel,note")
+    fun makeNote(title:String,note:String,currentDate:String,priority:String?){
+        if(title.isEmpty() || note.isEmpty() ){
+            println("Enter titel,note,priority")
             return
         }
 
 
-        val note = Note(title,note,1,currentDate)
+        val note = Note(note,title,currentDate,priority)
         insertNote(note)
 
     }
+
+
 
 }

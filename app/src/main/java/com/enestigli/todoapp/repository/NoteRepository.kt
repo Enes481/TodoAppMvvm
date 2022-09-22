@@ -1,5 +1,6 @@
 package com.enestigli.todoapp.repository
 
+import androidx.lifecycle.LiveData
 import com.enestigli.todoapp.application.Application
 import com.enestigli.todoapp.room.Note
 import com.enestigli.todoapp.room.NoteDao
@@ -10,8 +11,9 @@ class NoteRepository @Inject constructor(
 
 ) : INoteRepository{
 
-    override suspend fun getNotes(): List<Note> {
-       return noteDao.getNotes()
+
+    override fun getNote(): LiveData<List<Note>> {
+       return noteDao.observeNotes()
     }
 
     override suspend fun Insert(note: Note) {
