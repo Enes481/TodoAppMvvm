@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioGroup
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.enestigli.todoapp.R
 import com.enestigli.todoapp.databinding.FragmentAddNoteBinding
 import com.enestigli.todoapp.util.Priority
+import com.enestigli.todoapp.util.Status
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -39,6 +42,9 @@ class AddNoteFragment @Inject constructor(): Fragment(R.layout.fragment_add_note
         fragmentAddNoteBinding = binding
 
 
+        subscribeToObservers()
+
+
 
         binding.AddNoteFragmentBtn.setOnClickListener{
 
@@ -51,7 +57,7 @@ class AddNoteFragment @Inject constructor(): Fragment(R.layout.fragment_add_note
                 priority
             )
 
-            findNavController().navigate(AddNoteFragmentDirections.actionAddNoteFragmentToHomeFragment())
+            //findNavController().navigate(AddNoteFragmentDirections.actionAddNoteFragmentToHomeFragment())
 
 
 
@@ -60,6 +66,30 @@ class AddNoteFragment @Inject constructor(): Fragment(R.layout.fragment_add_note
 
     }
 
+    private fun subscribeToObservers(){
+
+
+        viewModel.insertArtMessage.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+
+            when(it.status){
+                Status.SUCCESS ->{
+                    Toast.makeText(requireContext(),"Success",Toast.LENGTH_LONG).show()
+                    findNavController().popBackStack()
+                    viewModel.resetInsertArtMsg()//art message success den errora loading e çevirmemek için yaptık ,boş bıraktık
+
+                }
+
+                Status.ERROR ->{
+                    Toast.makeText(requireContext(),it.message ?: "Error",Toast.LENGTH_LONG).show()
+                }
+
+                Status.LOADING ->{
+
+                }
+            }
+        })
+
+    }
 
     private fun checkedRadioButton(){
 
