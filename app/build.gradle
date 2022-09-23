@@ -79,6 +79,7 @@ dependencies {
     kapt 'com.github.bumptech.glide:compiler:4.13.2'
 
 
+
     // TestImplementations
     implementation "androidx.test:core:1.4.0"
     testImplementation "junit:junit:4.13.2"

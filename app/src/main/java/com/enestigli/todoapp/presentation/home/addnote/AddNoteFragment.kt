@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.RadioGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.enestigli.todoapp.R
 import com.enestigli.todoapp.databinding.FragmentAddNoteBinding
 import com.enestigli.todoapp.util.Priority
@@ -48,8 +49,12 @@ class AddNoteFragment @Inject constructor(): Fragment(R.layout.fragment_add_note
                 binding.AddNoteFragmentTxtNote.text.toString(),
                 currentDate,
                 priority
-
             )
+
+            findNavController().navigate(AddNoteFragmentDirections.actionAddNoteFragmentToHomeFragment())
+
+
+
         }
 
 

@@ -11,7 +11,7 @@ class HomeViewModel @Inject constructor(
     private val repository: INoteRepository
 ): ViewModel() {
 
-
+    val noteList = repository.getNote()
 
 
 }

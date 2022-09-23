@@ -25,7 +25,10 @@ class AddNoteViewModel @Inject constructor(
 
 
     fun makeNote(title:String,note:String,currentDate:String,priority:String?){
-        if(title.isEmpty() || note.isEmpty() ){
+
+
+        if(title.isEmpty() || note.isEmpty() || priority.isNullOrEmpty() ){
+
             println("Enter titel,note,priority")
             return
         }
