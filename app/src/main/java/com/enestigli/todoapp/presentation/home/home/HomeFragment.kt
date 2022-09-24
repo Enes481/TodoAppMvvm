@@ -1,11 +1,14 @@
 package com.enestigli.todoapp.presentation.home.home
 
 import android.os.Bundle
+import android.view.*
+import androidx.appcompat.view.menu.MenuBuilder
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -15,6 +18,9 @@ import com.enestigli.todoapp.adapter.HomeRecyclerAdapter
 import com.enestigli.todoapp.adapter.IHomeClickListener
 import com.enestigli.todoapp.databinding.FragmentHomeBinding
 import com.enestigli.todoapp.room.Note
+import com.enestigli.todoapp.util.AlertDialogMessages
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -31,6 +37,45 @@ class HomeFragment : Fragment(R.layout.fragment_home),IHomeClickListener {
 
         super.onViewCreated(view, savedInstanceState)
         //viewModel = ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
+
+        val menuHost: MenuHost = requireActivity()
+
+
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                // Add menu items here
+
+                menuInflater.inflate(R.menu.menu, menu)
+
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                // Handle the menu selection
+                return when (menuItem.itemId) {
+                    R.id.deleteAllItem -> {
+
+                        viewModel.noteList.observe(viewLifecycleOwner,Observer {
+
+                            if(it.isNotEmpty()){
+                                showAlertDialog()
+                            }
+
+
+
+
+                        })
+
+
+                        true
+                    }
+
+                    else -> false
+                }
+            }
+
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+
 
         val binding = FragmentHomeBinding.bind(view)
         fragmentBinding = binding
@@ -56,7 +101,11 @@ class HomeFragment : Fragment(R.layout.fragment_home),IHomeClickListener {
     }
 
 
-   override fun onDestroy() {
+
+
+
+
+    override fun onDestroy() {
         fragmentBinding = null
         super.onDestroy()
 
@@ -69,6 +118,38 @@ class HomeFragment : Fragment(R.layout.fragment_home),IHomeClickListener {
     override fun editNote(note: Note) {
         viewModel.editNote(note)
     }
+
+
+
+    fun showAlertDialog() {
+
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Warning !")
+            .setMessage(AlertDialogMessages.DeleteAllNotesMsg.msg)
+            .setNegativeButton("no"){_,_ ->
+
+                showSnackBar(AlertDialogMessages.DeclineMsg.msg)
+
+            }
+            .setPositiveButton("Yes"){dialog,_  ->
+
+                showSnackBar(AlertDialogMessages.DeletedNotesMsg.msg)
+                viewModel.deleteAll()
+                dialog.cancel()
+            }
+
+            .show()
+
+
+
+    }
+
+
+    private fun showSnackBar(msg:String){
+
+        Snackbar.make(requireView(),msg,Snackbar.LENGTH_LONG).show()
+    }
+
 
 
 }
