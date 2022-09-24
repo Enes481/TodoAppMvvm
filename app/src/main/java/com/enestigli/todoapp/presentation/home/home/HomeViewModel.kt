@@ -2,8 +2,11 @@ package com.enestigli.todoapp.presentation.home.home
 
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.enestigli.todoapp.repository.INoteRepository
+import com.enestigli.todoapp.room.Note
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -12,6 +15,17 @@ class HomeViewModel @Inject constructor(
 ): ViewModel() {
 
     val noteList = repository.getNote()
+
+
+    fun deleteNote(note: Note) = viewModelScope.launch{
+        repository.Delete(note)
+    }
+
+
+    fun editNote(note:Note) = viewModelScope.launch {
+        repository.update(note)
+    }
+
 
 
 }

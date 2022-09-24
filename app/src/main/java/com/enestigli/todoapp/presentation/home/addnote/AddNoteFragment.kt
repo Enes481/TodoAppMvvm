@@ -22,10 +22,10 @@ import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class AddNoteFragment @Inject constructor(): Fragment(R.layout.fragment_add_note) {
+class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
 
     private lateinit var fragmentAddNoteBinding:FragmentAddNoteBinding
-    private lateinit var viewModel:AddNoteViewModel
+    private val viewModel:AddNoteViewModel by viewModels()  //ViewModelProvider 'dan by viewModels() e çevirdik. Bu daha efektif bir yaklaşım sağlıyor.
 
     private val sdf = SimpleDateFormat("yyyy-MM-dd")
     private val currentDate = sdf.format(Date())
@@ -36,7 +36,7 @@ class AddNoteFragment @Inject constructor(): Fragment(R.layout.fragment_add_note
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity()).get(AddNoteViewModel::class.java)
+        //viewModel = ViewModelProvider(requireActivity()).get(AddNoteViewModel::class.java)
 
         val binding = FragmentAddNoteBinding.bind(view)
         fragmentAddNoteBinding = binding
@@ -44,6 +44,13 @@ class AddNoteFragment @Inject constructor(): Fragment(R.layout.fragment_add_note
 
         subscribeToObservers()
 
+      /*  val callback = object :OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                findNavController().popBackStack()
+            }
+
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(callback)*/
 
 
         binding.AddNoteFragmentBtn.setOnClickListener{

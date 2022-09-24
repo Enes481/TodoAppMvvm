@@ -11,13 +11,10 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
 
-    @Inject
-    lateinit var fragmentFactory: NoteFragmentFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        supportFragmentManager.fragmentFactory = fragmentFactory
         setContentView(R.layout.activity_main)
     }
 }
