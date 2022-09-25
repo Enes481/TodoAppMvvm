@@ -82,7 +82,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
                 Status.SUCCESS ->{
                     Toast.makeText(requireContext(),"Success",Toast.LENGTH_LONG).show()
                     findNavController().popBackStack()
-                    viewModel.resetInsertArtMsg()//art message success den errora loading e çevirmemek için yaptık ,boş bıraktık
+                    viewModel.resetInsertNoteMsg()//art message success den errora loading e çevirmemek için yaptık ,boş bıraktık
 
                 }
 

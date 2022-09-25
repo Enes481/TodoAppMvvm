@@ -5,10 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.enestigli.todoapp.R
+import com.enestigli.todoapp.presentation.home.addnote.AddNoteFragmentDirections
+import com.enestigli.todoapp.presentation.home.home.HomeFragmentDirections
 import com.enestigli.todoapp.room.Note
 import javax.inject.Inject
 
@@ -72,6 +76,8 @@ class HomeRecyclerAdapter (private val clickListener: IHomeClickListener) : Recy
         }
 
         editBtn.setOnClickListener{
+
+            clickListener.editNote(note)
 
         }
 

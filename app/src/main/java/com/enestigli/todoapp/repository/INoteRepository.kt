@@ -18,5 +18,5 @@ interface INoteRepository {
 
     suspend fun deleteAll()
 
-    suspend fun update(note: Note)
+    suspend fun update(note:Note)
 }

@@ -18,6 +18,6 @@ interface NoteDao {
     @Query("DELETE FROM Notes")
     suspend fun deleteAll()
 
-    @Update
-    suspend fun update(note:Note)
+    @Query("UPDATE Notes SET Title =:title, Note =:note,Priority =:priority,EditedNoteDate =:editedDateTime WHERE uid = :noteId")
+    suspend fun update(noteId:Int?,title:String,note:String,priority:String?,editedDateTime:String)
 }
