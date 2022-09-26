@@ -19,7 +19,7 @@ data class Note(
     @ColumnInfo(name = "priority") val priority:String?=null,
     @PrimaryKey(autoGenerate = true) val uid:Int?=null,
     @ColumnInfo(name = "EditedNoteDate") val EditedNoteDate:String?=null,
-    @ColumnInfo(name = "editedNote") val editedNote:String?=null
+    //@ColumnInfo(name = "editedNote") val editedNote:String?=null
 
 
 ) : Parcelable
