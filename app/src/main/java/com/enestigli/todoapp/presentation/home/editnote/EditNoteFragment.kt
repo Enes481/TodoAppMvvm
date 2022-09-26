@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -88,7 +90,6 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
 
 
 
-
     }
 
 
@@ -130,6 +131,7 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
             R.id.EditNoteFragmentLowPriorityRadioBtn-> Editpriority = Priority.LOW.priority
         }
     }
+
 
 
 

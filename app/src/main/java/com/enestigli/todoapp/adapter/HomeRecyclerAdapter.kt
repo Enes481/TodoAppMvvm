@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -14,6 +15,7 @@ import com.enestigli.todoapp.R
 import com.enestigli.todoapp.presentation.home.addnote.AddNoteFragmentDirections
 import com.enestigli.todoapp.presentation.home.home.HomeFragmentDirections
 import com.enestigli.todoapp.room.Note
+import org.w3c.dom.Text
 import javax.inject.Inject
 
 
@@ -54,21 +56,23 @@ class HomeRecyclerAdapter (private val clickListener: IHomeClickListener) : Recy
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
 
-        val title = holder.itemView.findViewById<TextView>(R.id.tite)
+
+        val title = holder.itemView.findViewById<TextView>(R.id.title)
         val desc =  holder.itemView.findViewById<TextView>(R.id.note)
         val priority = holder.itemView.findViewById<TextView>(R.id.priority)
         val dateTime = holder.itemView.findViewById<TextView>(R.id.dateTime)
-        val editBtn = holder.itemView.findViewById<Button>(R.id.HomeFragmentEditBtn)
-        val deleteBtn = holder.itemView.findViewById<Button>(R.id.HomeFragmentDeleteBtn)
-
+        val editBtn = holder.itemView.findViewById<ImageView>(R.id.HomeFragmentEditBtn)
+        val deleteBtn = holder.itemView.findViewById<ImageView>(R.id.HomeFragmentDeleteBtn)
+        val editedDate = holder.itemView.findViewById<TextView>(R.id.editedDate)
 
         val note = noteList[position]
 
         holder.itemView.apply {
-            title?.text = "Title: ${note.title}"
-            desc?.text = "Note: ${note.note}"
-            priority?.text = "Priority: ${note.priority}"
-            dateTime?.text = "DateTime: ${note.noteDate}"
+            title?.text = "${note.title}"
+            desc?.text = "${note.note}"
+            priority?.text = "${note.priority}"
+            dateTime?.text = "${note.noteDate}"
+            editedDate.text = "${note.EditedNoteDate}"
         }
 
         deleteBtn.setOnClickListener{

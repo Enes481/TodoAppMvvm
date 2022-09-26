@@ -43,6 +43,7 @@ class EditNoteViewModel @Inject constructor(
             val note = Note(note,title,currentDate,priority,id,EditDate)
             updateNote(note)
             insertArtMsg.postValue(Resource.success(note))
+
         }
 
 
