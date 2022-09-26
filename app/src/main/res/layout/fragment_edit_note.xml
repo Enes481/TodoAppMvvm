@@ -5,12 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.home.addnote.AddNoteFragment"
+    tools:context=".presentation.home.editnote.EditNoteFragment"
     android:orientation="vertical">
 
 
     <LinearLayout
-        android:id="@+id/AddNoteFragmentTitleLinearLayout"
+        android:id="@+id/EditNoteFragmentTitleLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -32,7 +32,7 @@
             />
 
         <EditText
-            android:id="@+id/AddNoteFragmentTxtTitle"
+            android:id="@+id/EditNoteFragmentTxtTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -47,7 +47,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/AddNoteFragmentNoteLinearLayout"
+        android:id="@+id/EditNoteFragmentNoteLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -59,7 +59,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
+            android:layout_gravity="left"
             android:layout_margin="2dp"
             android:padding="2dp"
             android:text="@string/taskNote"
@@ -70,7 +70,7 @@
             />
 
         <EditText
-            android:id="@+id/AddNoteFragmentTxtNote"
+            android:id="@+id/EditNoteFragmentTxtNote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -172,28 +172,28 @@
 
             <RadioGroup
 
-                android:id="@+id/AddNoteFragmentRadioGroup"
+                android:id="@+id/EditNoteFragmentRadioGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/AddNoteFragmentHighPriorityRadioBtn"
+                    android:id="@+id/EditNoteFragmentHighPriorityRadioBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp">
                 </RadioButton>
 
                 <RadioButton
-                    android:id="@+id/AddNoteFragmentMediumPriorityRadioBtn"
+                    android:id="@+id/EditNoteFragmentMediumPriorityRadioBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp">
                 </RadioButton>
 
                 <RadioButton
-                    android:id="@+id/AddNoteFragmentLowPriorityRadioBtn"
+                    android:id="@+id/EditNoteFragmentLowPriorityRadioBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp">
@@ -206,25 +206,29 @@
 
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center|bottom"
-        android:layout_margin="4dp">
-
-
-        <Button
-            android:id="@+id/AddNoteFragmentBtn"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="2dp"
-            android:layout_margin="2dp"
-            android:text="@string/addBtn"
-            android:backgroundTint="@color/material_dynamic_neutral_variant20"
-            />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center|bottom"
+            android:layout_margin="4dp">
 
-    </LinearLayout>
+
+            <Button
+                android:id="@+id/EditNoteFragmentBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:layout_margin="2dp"
+                android:text="@string/editBtn"
+                android:backgroundTint="@color/material_dynamic_neutral_variant20"
+                />
+
+        </LinearLayout>
+
+
+
+
 
 
 </LinearLayout>
