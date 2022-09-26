@@ -128,6 +128,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),IHomeClickListener {
 
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Warning !")
+            .setIcon(R.drawable.ic_warning3)
             .setMessage(AlertDialogMessages.DeleteAllNotesMsg.msg)
             .setNegativeButton("no"){_,_ ->
 

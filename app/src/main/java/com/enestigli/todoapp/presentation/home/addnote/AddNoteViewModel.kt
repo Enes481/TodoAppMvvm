@@ -1,6 +1,7 @@
 package com.enestigli.todoapp.presentation.home.addnote
 
 import android.widget.Toast
+import androidx.core.graphics.toColorInt
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -42,6 +43,7 @@ class AddNoteViewModel @Inject constructor(
             return
         }
         else{
+
             val note = Note(note,title,currentDate,priority)
             insertNote(note)
             insertArtMsg.postValue(Resource.success(note))
