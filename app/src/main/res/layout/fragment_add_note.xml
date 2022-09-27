@@ -85,6 +85,42 @@
 
 
 
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AddNoteFragmentTitleLinearLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_margin="2dp"
+            android:padding="2dp"
+            android:text="@string/category"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/holo_orange_light"
+
+            />
+
+        <EditText
+            android:id="@+id/AddNoteFragmentTxtCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:hint="@string/addCategoryHint"
+            android:backgroundTint="@android:color/holo_orange_light"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+
+    </LinearLayout>
 
 
 
@@ -212,6 +248,7 @@
         android:orientation="vertical"
         android:gravity="center|bottom"
         android:layout_margin="4dp">
+
 
 
         <Button

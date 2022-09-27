@@ -64,6 +64,7 @@ class HomeRecyclerAdapter (private val clickListener: IHomeClickListener) : Recy
         val editBtn = holder.itemView.findViewById<ImageView>(R.id.HomeFragmentEditBtn)
         val deleteBtn = holder.itemView.findViewById<ImageView>(R.id.HomeFragmentDeleteBtn)
         val editedDate = holder.itemView.findViewById<TextView>(R.id.editedDate)
+        val category = holder.itemView.findViewById<TextView>(R.id.category)
 
         val note = noteList[position]
 
@@ -73,6 +74,7 @@ class HomeRecyclerAdapter (private val clickListener: IHomeClickListener) : Recy
             priority?.text = "${note.priority}"
             dateTime?.text = "${note.noteDate}"
             editedDate.text = "${note.EditedNoteDate ?: ""}"
+            category.text = "${note.category}"
         }
 
         deleteBtn.setOnClickListener{

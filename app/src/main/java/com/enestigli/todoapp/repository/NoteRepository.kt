@@ -32,6 +32,6 @@ class NoteRepository @Inject constructor(
 
     override suspend fun update(note: Note) {
 
-        noteDao.update(note.uid,note.title,note.note,note.priority,note.EditedNoteDate!!)
+        noteDao.update(note.uid,note.title,note.note,note.priority,note.EditedNoteDate!!,note.category)
     }
 }

@@ -30,17 +30,17 @@ class EditNoteViewModel @Inject constructor(
         insertArtMsg = MutableLiveData<Resource<Note>>()
     }
 
-    fun makeNote(id:Int?,title:String,note:String,EditDate:String,currentDate:String,priority:String?){
+    fun makeNote(id:Int?,title:String,note:String,EditDate:String,currentDate:String,priority:String?,category:String){
 
 
-        if(title.isEmpty() || note.isEmpty() || priority.isNullOrEmpty()){
+        if(title.isEmpty() || note.isEmpty() || priority.isNullOrEmpty() || category.isEmpty()){
 
-            insertArtMsg.postValue(Resource.error("Enter Title,Note,Priority.",null))
+            insertArtMsg.postValue(Resource.error("Enter Title,Note,Priority,Category.",null))
             return
         }
         else{
-
-            val note = Note(note,title,currentDate,priority,id,EditDate)
+            println("category -- > "+category)
+            val note = Note(note,title,currentDate,category,priority,id,EditDate)
             updateNote(note)
             insertArtMsg.postValue(Resource.success(note))
 
