@@ -36,21 +36,12 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
-        //viewModel = ViewModelProvider(requireActivity()).get(AddNoteViewModel::class.java)
 
         val binding = FragmentAddNoteBinding.bind(view)
         fragmentAddNoteBinding = binding
 
 
         subscribeToObservers()
-
-      /*  val callback = object :OnBackPressedCallback(true){
-            override fun handleOnBackPressed() {
-                findNavController().popBackStack()
-            }
-
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(callback)*/
 
 
         binding.AddNoteFragmentBtn.setOnClickListener{
@@ -61,7 +52,8 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
                 binding.AddNoteFragmentTxtTitle.text.toString(),
                 binding.AddNoteFragmentTxtNote.text.toString(),
                 currentDate,
-                priority
+                priority,
+                binding.AddNoteFragmentTxtCategory.text.toString()
             )
 
             //findNavController().navigate(AddNoteFragmentDirections.actionAddNoteFragmentToHomeFragment())

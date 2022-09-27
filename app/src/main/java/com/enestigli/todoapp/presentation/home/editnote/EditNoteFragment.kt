@@ -45,7 +45,7 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
 
         binding.EditNoteFragmentTxtTitle.setText(args.currentNote.title)
         binding.EditNoteFragmentTxtNote.setText(args.currentNote.note)
-
+        binding.EditNoteFragmentTxtCategory.setText(args.currentNote.category)
 
         uid = args.currentNote.uid
 
@@ -79,7 +79,8 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
                 binding.EditNoteFragmentTxtNote.text.toString(),
                 EditDate,
                 args.currentNote.noteDate,
-                Editpriority
+                Editpriority,
+                binding.EditNoteFragmentTxtCategory.text.toString()
             )
 
             //findNavController().navigate(AddNoteFragmentDirections.actionAddNoteFragmentToHomeFragment())

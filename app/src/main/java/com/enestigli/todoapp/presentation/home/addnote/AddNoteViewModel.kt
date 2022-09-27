@@ -1,13 +1,10 @@
 package com.enestigli.todoapp.presentation.home.addnote
 
-import android.widget.Toast
-import androidx.core.graphics.toColorInt
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.enestigli.todoapp.application.Application
-import com.enestigli.todoapp.base.BaseViewModel
 import com.enestigli.todoapp.repository.INoteRepository
 import com.enestigli.todoapp.room.Note
 import com.enestigli.todoapp.util.Resource
@@ -34,17 +31,17 @@ class AddNoteViewModel @Inject constructor(
     }
 
 
-    fun makeNote(title:String,note:String,currentDate:String,priority:String?){
+    fun makeNote(title:String,note:String,currentDate:String,priority:String?,category:String){
 
 
-        if(title.isEmpty() || note.isEmpty() || priority.isNullOrEmpty() ){
+        if(title.isEmpty() || note.isEmpty() || priority.isNullOrEmpty() || category.isEmpty() ){
 
-            insertArtMsg.postValue(Resource.error("Enter Title,Note,Priority.",null))
+            insertArtMsg.postValue(Resource.error("Enter Title,Note,Priority,category.",null))
             return
         }
         else{
 
-            val note = Note(note,title,currentDate,priority)
+            val note = Note(note,title,currentDate,category,priority)
             insertNote(note)
             insertArtMsg.postValue(Resource.success(note))
         }

@@ -5,16 +5,19 @@
     <!-- Hints -->
     <string name="taskTitleHint">Enter task title</string>
     <string name="taskNoteHint">Enter your task</string>
+    <string name="addCategoryHint">Enter category</string>
 
 
     <!-- Titles -->
     <string name="taskTitle">Task title</string>
     <string name="taskPriority">Priority</string>
     <string name="taskNote">What is to be done</string>
+    <string name="category">Category</string>
     <string name="HighPriority">High</string>
     <string name="MediumPriority">Medium</string>
     <string name="LowPriority">Low</string>
-
+    <string name="Date">Date</string>
+    <string name="EditDate">Edit Date</string>
 
 
     <!-- Buttons -->
