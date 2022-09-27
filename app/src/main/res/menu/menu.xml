@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
         android:id="@+id/deleteAllItem"
         android:title="Delete All"
-        android:icon="@drawable/ic_baseline_restore_from_trash_24"
-        app:showAsAction="withText">
-
+        android:icon="@drawable/ic_remove_btn3"
+        app:showAsAction="always">
     </item>
+
 </menu>

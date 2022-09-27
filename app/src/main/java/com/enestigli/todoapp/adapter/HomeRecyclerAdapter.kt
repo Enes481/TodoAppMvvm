@@ -72,7 +72,7 @@ class HomeRecyclerAdapter (private val clickListener: IHomeClickListener) : Recy
             desc?.text = "${note.note}"
             priority?.text = "${note.priority}"
             dateTime?.text = "${note.noteDate}"
-            editedDate.text = "${note.EditedNoteDate}"
+            editedDate.text = "${note.EditedNoteDate ?: ""}"
         }
 
         deleteBtn.setOnClickListener{
