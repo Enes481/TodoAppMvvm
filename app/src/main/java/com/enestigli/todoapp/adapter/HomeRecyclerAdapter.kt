@@ -15,6 +15,7 @@ import com.enestigli.todoapp.R
 import com.enestigli.todoapp.presentation.home.addnote.AddNoteFragmentDirections
 import com.enestigli.todoapp.presentation.home.home.HomeFragmentDirections
 import com.enestigli.todoapp.room.Note
+import kotlinx.android.synthetic.main.home_row.view.*
 import org.w3c.dom.Text
 import javax.inject.Inject
 
@@ -65,7 +66,7 @@ class HomeRecyclerAdapter (private val clickListener: IHomeClickListener) : Recy
         val deleteBtn = holder.itemView.findViewById<ImageView>(R.id.HomeFragmentDeleteBtn)
         val editedDate = holder.itemView.findViewById<TextView>(R.id.editedDate)
         val category = holder.itemView.findViewById<TextView>(R.id.category)
-
+        val notificationClock = holder.itemView.findViewById<ImageView>(R.id.notificationClock)
         val note = noteList[position]
 
         holder.itemView.apply {
@@ -84,8 +85,12 @@ class HomeRecyclerAdapter (private val clickListener: IHomeClickListener) : Recy
         editBtn.setOnClickListener{
 
             clickListener.editNote(note)
-
         }
+
+        notificationClock.setOnClickListener{
+            clickListener.setClock()
+        }
+
 
     }
 

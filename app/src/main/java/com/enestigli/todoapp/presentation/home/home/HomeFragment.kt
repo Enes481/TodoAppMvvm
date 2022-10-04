@@ -122,6 +122,11 @@ class HomeFragment : Fragment(R.layout.fragment_home),IHomeClickListener {
 
     }
 
+    override fun setClock() {
+        println("setclock Home fragment")
+        val action:NavDirections = HomeFragmentDirections.actionHomeFragmentToClockFragment()
+        findNavController().navigate(action)
+    }
 
 
     fun showAlertDialog() {

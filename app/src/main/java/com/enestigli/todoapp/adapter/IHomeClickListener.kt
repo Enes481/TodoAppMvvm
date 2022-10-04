@@ -6,4 +6,5 @@ interface IHomeClickListener {
 
     fun deleteNote(note:Note)
     fun editNote(note: Note)
+    fun setClock()
 }
