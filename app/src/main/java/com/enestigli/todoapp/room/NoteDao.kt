@@ -10,10 +10,10 @@ interface NoteDao {
     fun observeNotes(): LiveData<List<Note>> //suspend yazmadık çünkü livedata zaten asenkron çalışır.
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun Insert(note:Note)
+    suspend fun Insert(note: Note)
 
     @Delete
-    suspend fun Delete(note:Note)
+    suspend fun Delete(note: Note)
 
     @Query("DELETE FROM Notes")
     suspend fun deleteAll()

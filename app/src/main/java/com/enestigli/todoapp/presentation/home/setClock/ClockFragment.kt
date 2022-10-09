@@ -8,6 +8,7 @@ import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat.getSystemService
@@ -59,7 +60,17 @@ class ClockFragment : Fragment(R.layout.fragment_clock) {
     private fun setClockAlarm() {
 
 
-     val intent = Intent(requireContext().applicationContext, Notification::class.java)
+        val intent = Intent(requireContext().applicationContext, Notification::class.java)
+        val title = fragmentClockBinding.notificationTitle.text.toString()
+        val message = fragmentClockBinding.notificationNote.text.toString()
+        intent.putExtra("titleExtra",title)
+        intent.putExtra("messageExtra",message)
+
+
+        if(title.isEmpty() || message.isEmpty()){
+            Toast.makeText(requireActivity(),"Enter title , message please.",Toast.LENGTH_LONG).show()
+            return
+        }
 
         val pendingIntent = PendingIntent.getBroadcast(
             requireContext().applicationContext,

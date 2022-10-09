@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.enestigli.todoapp.repository.INoteRepository
 import com.enestigli.todoapp.room.Note
+import com.enestigli.todoapp.domain.use_case.update_note.UpdateNoteUseCase
 import com.enestigli.todoapp.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EditNoteViewModel @Inject constructor(
-    private val repository: INoteRepository
+    private val editNoteUseCase:UpdateNoteUseCase
 ):ViewModel() {
 
     private var insertArtMsg = MutableLiveData<Resource<Note>>()
@@ -23,7 +23,7 @@ class EditNoteViewModel @Inject constructor(
 
 
     fun updateNote(note: Note) = viewModelScope.launch{
-        repository.update(note)
+        editNoteUseCase.update(note)
     }
 
     fun resetUpdateNoteMsg(){

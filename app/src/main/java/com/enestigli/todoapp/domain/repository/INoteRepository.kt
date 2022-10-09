@@ -1,10 +1,6 @@
-package com.enestigli.todoapp.repository
+package com.enestigli.todoapp.domain.repository
 
 import androidx.lifecycle.LiveData
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
 import com.enestigli.todoapp.room.Note
 
 interface INoteRepository {
@@ -18,5 +14,5 @@ interface INoteRepository {
 
     suspend fun deleteAll()
 
-    suspend fun update(note:Note)
+    suspend fun update(note: Note)
 }

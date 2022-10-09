@@ -5,18 +5,21 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import com.enestigli.todoapp.R
 import com.enestigli.todoapp.util.Constants
 
-class Notification :BroadcastReceiver(){
+class Notification:BroadcastReceiver(){
+
+
+
 
     override fun onReceive(context: Context, intent: Intent) {
 
+
         val notification = NotificationCompat.Builder(context, Constants.CHANNEL_ID)
-            .setContentTitle("")
-            .setContentText("This is the content text")
-            .setSmallIcon(R.drawable.ic_remove_btn2)
+            .setContentTitle(intent.getStringExtra("titleExtra"))
+            .setContentText(intent.getStringExtra("messageExtra"))
+            .setSmallIcon(R.drawable.ic_notification1)
             .setPriority(NotificationCompat.PRIORITY_HIGH) //aşağıdaki priority ile alakası yok , aiağıdaki daha çok bildirim geldiğinde ses gelsinmi falan gibi bu daha çok bildirimlerin ne kadar önemli olduğu ile alakalı
             .build()
 

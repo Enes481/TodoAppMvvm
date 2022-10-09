@@ -1,24 +1,15 @@
-package com.enestigli.todoapp.adapter
+package com.enestigli.todoapp.presentation.home.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.enestigli.todoapp.R
-import com.enestigli.todoapp.presentation.home.addnote.AddNoteFragmentDirections
-import com.enestigli.todoapp.presentation.home.home.HomeFragmentDirections
 import com.enestigli.todoapp.room.Note
-import kotlinx.android.synthetic.main.home_row.view.*
-import org.w3c.dom.Text
-import javax.inject.Inject
-
 
 
 class HomeRecyclerAdapter (private val clickListener: IHomeClickListener) : RecyclerView.Adapter<HomeRecyclerAdapter.HomeViewHolder>(){
@@ -88,6 +79,7 @@ class HomeRecyclerAdapter (private val clickListener: IHomeClickListener) : Recy
         }
 
         notificationClock.setOnClickListener{
+
             clickListener.setClock()
         }
 

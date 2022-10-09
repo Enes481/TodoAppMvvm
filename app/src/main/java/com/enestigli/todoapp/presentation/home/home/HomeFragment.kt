@@ -2,31 +2,24 @@ package com.enestigli.todoapp.presentation.home.home
 
 import android.os.Bundle
 import android.view.*
-import androidx.appcompat.view.menu.MenuBuilder
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
-import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDirections
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.enestigli.todoapp.R
-import com.enestigli.todoapp.adapter.HomeRecyclerAdapter
-import com.enestigli.todoapp.adapter.IHomeClickListener
+import com.enestigli.todoapp.presentation.home.adapter.HomeRecyclerAdapter
+import com.enestigli.todoapp.presentation.home.adapter.IHomeClickListener
 import com.enestigli.todoapp.databinding.FragmentHomeBinding
 import com.enestigli.todoapp.room.Note
 import com.enestigli.todoapp.util.AlertDialogMessages
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home),IHomeClickListener {

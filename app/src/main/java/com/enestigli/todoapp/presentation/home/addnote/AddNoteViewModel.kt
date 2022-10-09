@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.enestigli.todoapp.repository.INoteRepository
 import com.enestigli.todoapp.room.Note
+import com.enestigli.todoapp.domain.use_case.insert_note.InsertNoteUseCase
 import com.enestigli.todoapp.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AddNoteViewModel @Inject constructor(
-    private val repository: INoteRepository,
+    private val addNoteUseCase: InsertNoteUseCase,
 
 ): ViewModel() {
 
@@ -27,7 +27,7 @@ class AddNoteViewModel @Inject constructor(
     }
 
     private fun insertNote(note: Note) = viewModelScope.launch{
-        repository.Insert(note)
+        addNoteUseCase.insert(note)
     }
 
 
