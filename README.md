@@ -1,8 +1,10 @@
 
+<br/>
 
 # What is ToDo App ?
 
 * ### Todo app is a note application made in kotlin programming language using mvvm architecture and clean architecture.
+<br/><br/>
 
 # Technologies used in the project
 
@@ -14,7 +16,7 @@
 - ### Broadcast Receiver
 - ### Alarm Manager
 
-
+<br/><br/>
 # What is Android Clean Architecture ? 
 * ### Clean architecture is a method of software development in which you should be able to identify what a program performs merely by looking at its source code. The programming language, hardware, and software libraries needed to achieve the program’s goal should be rendered obsolete. Like other software design philosophies, Clean architecture aims to provide a cost-effective process for developing quality code that performs better, is easier to alter, and has fewer dependencies
 
