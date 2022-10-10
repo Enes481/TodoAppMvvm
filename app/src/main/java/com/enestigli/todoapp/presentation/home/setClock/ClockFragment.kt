@@ -83,7 +83,7 @@ class ClockFragment : Fragment(R.layout.fragment_clock) {
         val time = getTime()
         alarmManager.setExact(AlarmManager.RTC_WAKEUP,time,pendingIntent)
 
-        //showAlert(time,"Title","Desc")
+        showAlert(time,title,message)
         //showAlert(time, "title!!!'212", "message!'^1231")
     }
 
