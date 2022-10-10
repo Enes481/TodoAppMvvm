@@ -2,20 +2,13 @@ package com.enestigli.todoapp.presentation.home.editnote
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
-import androidx.activity.addCallback
-import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.enestigli.todoapp.R
-import com.enestigli.todoapp.databinding.FragmentAddNoteBinding
 import com.enestigli.todoapp.databinding.FragmentEditNoteBinding
-import com.enestigli.todoapp.room.Note
 import com.enestigli.todoapp.util.Priority
 import com.enestigli.todoapp.util.Status
 import dagger.hilt.android.AndroidEntryPoint

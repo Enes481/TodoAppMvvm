@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_editNoteFragment"
             app:destination="@id/editNoteFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_clockFragment"
+            app:destination="@id/clockFragment" />
     </fragment>
     <fragment
         android:id="@+id/addNoteFragment"
@@ -37,5 +40,14 @@
         <argument
             android:name="currentNote"
             app:argType="com.enestigli.todoapp.room.Note" />
+    </fragment>
+    <fragment
+        android:id="@+id/clockFragment"
+        android:name="com.enestigli.todoapp.presentation.home.setClock.ClockFragment"
+        android:label="fragment_clock"
+        tools:layout="@layout/fragment_clock" >
+        <action
+            android:id="@+id/action_clockFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

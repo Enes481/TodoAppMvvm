@@ -1,15 +1,15 @@
-package com.enestigli.todoapp.repository
+package com.enestigli.todoapp.data.repository
 
 import androidx.lifecycle.LiveData
-import com.enestigli.todoapp.application.Application
 import com.enestigli.todoapp.room.Note
 import com.enestigli.todoapp.room.NoteDao
+import com.enestigli.todoapp.domain.repository.INoteRepository
 import javax.inject.Inject
 
 class NoteRepository @Inject constructor(
     private val noteDao: NoteDao
 
-) : INoteRepository{
+) : INoteRepository {
 
 
     override fun getNote(): LiveData<List<Note>> {
@@ -27,8 +27,6 @@ class NoteRepository @Inject constructor(
     override suspend fun deleteAll() {
         noteDao.deleteAll()
     }
-
-
 
     override suspend fun update(note: Note) {
 
