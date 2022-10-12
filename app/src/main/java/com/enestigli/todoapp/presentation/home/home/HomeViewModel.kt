@@ -1,8 +1,9 @@
 package com.enestigli.todoapp.presentation.home.home
 
 
-import androidx.lifecycle.ViewModel
+
 import androidx.lifecycle.viewModelScope
+import com.enestigli.todoapp.base.BaseViewModel
 import com.enestigli.todoapp.room.Note
 import com.enestigli.todoapp.domain.use_case.delete_all_note.DeleteAllNoteUseCase
 import com.enestigli.todoapp.domain.use_case.delete_note.DeleteNoteUseCase
@@ -18,7 +19,7 @@ class HomeViewModel @Inject constructor(
     private val editNoteUseCase: UpdateNoteUseCase,
     private val deleteNoteUseCase: DeleteNoteUseCase,
     private val getNoteUseCase: GetNoteUseCase
-): ViewModel() {
+): BaseViewModel() {
 
     val noteList = getNoteUseCase.getNote()
 

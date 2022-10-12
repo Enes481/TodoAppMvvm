@@ -6,32 +6,26 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.View
 import android.widget.Toast
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.viewModels
 import com.enestigli.todoapp.R
+import com.enestigli.todoapp.base.BaseBindingFragment
 import com.enestigli.todoapp.databinding.FragmentClockBinding
 import com.enestigli.todoapp.util.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 @AndroidEntryPoint
-class ClockFragment : Fragment(R.layout.fragment_clock) {
+class ClockFragment : BaseBindingFragment<FragmentClockBinding,ClockViewModel>() {
 
 
-    private val viewModel:ClockViewModel by viewModels()
-    private lateinit var fragmentClockBinding :FragmentClockBinding
+    override val viewModel:ClockViewModel by viewModels()
+    override val layoutId: Int = R.layout.fragment_clock
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    //private lateinit var fragmentClockBinding :FragmentClockBinding
 
-        val binding = FragmentClockBinding.bind(view)
-        fragmentClockBinding = binding
-
+    override fun onReady(savedInstanceState: Bundle?) {
+        super.onReady(savedInstanceState)
 
         createNotificationChannel()
 
@@ -39,17 +33,16 @@ class ClockFragment : Fragment(R.layout.fragment_clock) {
         binding.setAlarmBtn.setOnClickListener{
             setClockAlarm()
         }
-
     }
 
 
     private fun getTime(): Long
     {
-        val minute = fragmentClockBinding.timePicker.minute
-        val day = fragmentClockBinding.datePicker.dayOfMonth
-        val month = fragmentClockBinding.datePicker.month
-        val hour = fragmentClockBinding.timePicker.hour
-        val year = fragmentClockBinding.datePicker.year
+        val minute =    binding.timePicker.minute
+        val day    =    binding.datePicker.dayOfMonth
+        val month  =    binding.datePicker.month
+        val hour   =    binding.timePicker.hour
+        val year   =    binding.datePicker.year
 
 
         val calendar = Calendar.getInstance()
@@ -61,8 +54,8 @@ class ClockFragment : Fragment(R.layout.fragment_clock) {
 
 
         val intent = Intent(requireContext().applicationContext, Notification::class.java)
-        val title = fragmentClockBinding.notificationTitle.text.toString()
-        val message = fragmentClockBinding.notificationNote.text.toString()
+        val title = binding.notificationTitle.text.toString()
+        val message = binding.notificationNote.text.toString()
         intent.putExtra("titleExtra",title)
         intent.putExtra("messageExtra",message)
 
@@ -84,7 +77,7 @@ class ClockFragment : Fragment(R.layout.fragment_clock) {
         alarmManager.setExact(AlarmManager.RTC_WAKEUP,time,pendingIntent)
 
         showAlert(time,title,message)
-        //showAlert(time, "title!!!'212", "message!'^1231")
+
     }
 
     private fun showAlert(time: Long, title: String, message: String)

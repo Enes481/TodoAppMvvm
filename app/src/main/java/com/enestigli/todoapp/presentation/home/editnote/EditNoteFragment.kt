@@ -1,13 +1,12 @@
 package com.enestigli.todoapp.presentation.home.editnote
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.enestigli.todoapp.R
+import com.enestigli.todoapp.base.BaseBindingFragment
 import com.enestigli.todoapp.databinding.FragmentEditNoteBinding
 import com.enestigli.todoapp.util.Priority
 import com.enestigli.todoapp.util.Status
@@ -16,11 +15,12 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 @AndroidEntryPoint
-class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
+class EditNoteFragment : BaseBindingFragment<FragmentEditNoteBinding,EditNoteViewModel>(){
 
-    private val viewModel:EditNoteViewModel by viewModels()
-    private lateinit var fragmentEditNoteBinding: FragmentEditNoteBinding
+    override val viewModel:EditNoteViewModel by viewModels()
+   // private lateinit var fragmentEditNoteBinding: FragmentEditNoteBinding
 
+    override val layoutId: Int = R.layout.fragment_edit_note
 
     private val args by navArgs<EditNoteFragmentArgs>()
     private var Editpriority:String? = null
@@ -28,11 +28,9 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
     private val sdf = SimpleDateFormat("yyyy-MM-dd")
     private val EditDate = sdf.format(Date())
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-        val binding = FragmentEditNoteBinding.bind(view)
-        fragmentEditNoteBinding = binding
+    override fun onReady(savedInstanceState: Bundle?) {
+        super.onReady(savedInstanceState)
 
         subscribeToObservers()
 
@@ -82,8 +80,6 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
 
         }
 
-
-
     }
 
 
@@ -116,7 +112,7 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
 
     private fun checkedRadioButton(){
 
-        val rbId = fragmentEditNoteBinding.EditNoteFragmentRadioGroup.getCheckedRadioButtonId()
+        val rbId = binding.EditNoteFragmentRadioGroup.getCheckedRadioButtonId()
 
         when (rbId) {
 
@@ -125,7 +121,6 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
             R.id.EditNoteFragmentLowPriorityRadioBtn-> Editpriority = Priority.LOW.priority
         }
     }
-
 
 
 

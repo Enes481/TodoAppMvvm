@@ -2,7 +2,6 @@ package com.enestigli.todoapp.presentation.home.home
 
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
@@ -12,6 +11,7 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.enestigli.todoapp.R
+import com.enestigli.todoapp.base.BaseBindingFragment
 import com.enestigli.todoapp.presentation.home.adapter.HomeRecyclerAdapter
 import com.enestigli.todoapp.presentation.home.adapter.IHomeClickListener
 import com.enestigli.todoapp.databinding.FragmentHomeBinding
@@ -22,18 +22,20 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(R.layout.fragment_home),IHomeClickListener {
+class HomeFragment : BaseBindingFragment<FragmentHomeBinding,HomeViewModel>(),IHomeClickListener {
 
 
     private val homeRecyclerAdapter = HomeRecyclerAdapter(this)
 
-    private val viewModel: HomeViewModel by viewModels()
-    private var fragmentBinding : FragmentHomeBinding? = null
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    //private var fragmentBinding : FragmentHomeBinding? = null
 
-        super.onViewCreated(view, savedInstanceState)
-        //viewModel = ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
+    override val viewModel: HomeViewModel by viewModels()
+    override val layoutId: Int = R.layout.fragment_home
+
+
+    override fun onReady(savedInstanceState: Bundle?) {
+        super.onReady(savedInstanceState)
 
         val menuHost: MenuHost = requireActivity()
 
@@ -71,8 +73,8 @@ class HomeFragment : Fragment(R.layout.fragment_home),IHomeClickListener {
 
 
 
-        val binding = FragmentHomeBinding.bind(view)
-        fragmentBinding = binding
+        //val binding = FragmentHomeBinding.bind(view)
+        //fragmentBinding = binding
 
         subscribeToObservers()
 
@@ -84,7 +86,6 @@ class HomeFragment : Fragment(R.layout.fragment_home),IHomeClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAddNoteFragment())
         }
 
-
     }
 
 
@@ -95,12 +96,6 @@ class HomeFragment : Fragment(R.layout.fragment_home),IHomeClickListener {
     }
 
 
-
-    override fun onDestroy() {
-        fragmentBinding = null
-        super.onDestroy()
-
-    }
 
     override fun deleteNote(note: Note) {
         viewModel.deleteNote(note)

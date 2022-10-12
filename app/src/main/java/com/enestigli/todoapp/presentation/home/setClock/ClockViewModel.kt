@@ -1,13 +1,14 @@
 package com.enestigli.todoapp.presentation.home.setClock
 
 
-import androidx.lifecycle.ViewModel
+
+import com.enestigli.todoapp.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 
 @HiltViewModel
-class ClockViewModel @Inject constructor():ViewModel() {
+class ClockViewModel @Inject constructor():BaseViewModel() {
 
 
 
