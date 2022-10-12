@@ -51,5 +51,5 @@
 <img src = "https://github.com/Enes481/TodoAppMvvm/blob/master/Images/Screenshot_1664292248.png" width = "320" height = "600" />
 
 <img src = "https://github.com/Enes481/TodoAppMvvm/blob/master/Images/Screenshot_1664292288.png" width = "320" height = "600" />
-<img src = "https://github.com/Enes481/TodoAppMvvm/blob/master/Images/Screenshot_1664292293.png" width = "320" height = "600" />
+<img src = "https://github.com/Enes481/TodoAppMvvm/blob/master/Images/Screenshot_1665570368.png" width = "320" height = "600" />
 <img src = "https://github.com/Enes481/TodoAppMvvm/blob/master/Images/Screenshot_1664292297.png" width = "320" height = "600" />
