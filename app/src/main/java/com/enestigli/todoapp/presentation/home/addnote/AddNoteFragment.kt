@@ -1,31 +1,27 @@
 package com.enestigli.todoapp.presentation.home.addnote
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.RadioGroup
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.enestigli.todoapp.R
+import com.enestigli.todoapp.base.BaseBindingFragment
 import com.enestigli.todoapp.databinding.FragmentAddNoteBinding
 import com.enestigli.todoapp.util.Priority
 import com.enestigli.todoapp.util.Status
 import dagger.hilt.android.AndroidEntryPoint
-import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
-import javax.inject.Inject
+
 
 @AndroidEntryPoint
-class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
+class AddNoteFragment : BaseBindingFragment<FragmentAddNoteBinding,AddNoteViewModel>() {
 
-    private lateinit var fragmentAddNoteBinding:FragmentAddNoteBinding
-    private val viewModel:AddNoteViewModel by viewModels()  //ViewModelProvider 'dan by viewModels() e çevirdik. Bu daha efektif bir yaklaşım sağlıyor.
+    //private lateinit var fragmentAddNoteBinding:FragmentAddNoteBinding
+
+    override val layoutId: Int = R.layout.fragment_add_note
+
+    override val viewModel:AddNoteViewModel by viewModels()  //ViewModelProvider 'dan by viewModels() e çevirdik. Bu daha efektif bir yaklaşım sağlıyor.
 
     private val sdf = SimpleDateFormat("yyyy-MM-dd")
     private val currentDate = sdf.format(Date())
@@ -33,12 +29,8 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
     private var priority:String? = null
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        super.onViewCreated(view, savedInstanceState)
-
-        val binding = FragmentAddNoteBinding.bind(view)
-        fragmentAddNoteBinding = binding
+    override fun onReady(savedInstanceState: Bundle?) {
+        super.onReady(savedInstanceState)
 
 
         subscribeToObservers()
@@ -58,10 +50,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
 
             //findNavController().navigate(AddNoteFragmentDirections.actionAddNoteFragmentToHomeFragment())
 
-
-
         }
-
 
     }
 
@@ -92,7 +81,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
 
     private fun checkedRadioButton(){
 
-        val rbId = fragmentAddNoteBinding.AddNoteFragmentRadioGroup.getCheckedRadioButtonId()
+        val rbId = binding.AddNoteFragmentRadioGroup.getCheckedRadioButtonId()
 
         when (rbId) {
 

@@ -3,8 +3,8 @@ package com.enestigli.todoapp.presentation.home.addnote
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.enestigli.todoapp.base.BaseViewModel
 import com.enestigli.todoapp.room.Note
 import com.enestigli.todoapp.domain.use_case.insert_note.InsertNoteUseCase
 import com.enestigli.todoapp.util.Resource
@@ -16,7 +16,7 @@ import javax.inject.Inject
 class AddNoteViewModel @Inject constructor(
     private val addNoteUseCase: InsertNoteUseCase,
 
-): ViewModel() {
+): BaseViewModel() {
 
     private var insertArtMsg = MutableLiveData<Resource<Note>>()
     val insertArtMessage: LiveData<Resource<Note>>
